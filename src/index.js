@@ -5,9 +5,12 @@ const app = express()
 
 app.set('view engine', 'ejs');
 
+app.use(express.static('public'));
+
 app.get('/', (req, res) => {
     res.render('pages/index')
 })
+
 
 app.listen(config.PORT, () => {
     console.log(`Listening on http://${config.HOSTNAME}:${config.PORT}`)

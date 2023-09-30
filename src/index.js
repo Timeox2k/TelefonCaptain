@@ -8,7 +8,20 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    res.render('pages/index')
+    const error = req.query.error || ""
+
+    res.render('pages/index', { error })
+})
+
+app.get('/:number', (req, res) => {
+    const number = req.params.number;
+
+    if (!number.match(config.PHONE_NUMBER_REGEX)) {
+        res.redirect("/?error=invalid_number")
+    }
+
+
+    res.render('pages/number', { number })
 })
 
 

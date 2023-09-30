@@ -4,18 +4,40 @@
         <div class="col s12"></div>
         <h1 class="center">TelefonCaptain</h1>
     </div>
+    <% if(error) { %>
+    
+    
+        <div class="row">
+            <div class="col s3 m3"></div>
+            <div class="col s12 m6">
+              <div class="card red darken-1">
+                <div class="card-content white-text">
+                  <span class="card-title">Invalid phone number</span>
+                  <p>This number is invalid. Please enter a <a href="https://en.wikipedia.org/wiki/E.164">valid phone number</a>.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        
 
+    <% } %>
     <div class="row">
         <div class="col s2"></div>
         <div class="col s8">
-            <form action="/search" method="get">
-                <input id="last_name" type="tel" class="validate">
-                <label for="last_name">Find phone number</label>
+            <form id="search-field" action="/" method="get">
+                <div class="input-field col s9 m9">
+                    <i class="material-icons prefix">phone</i>
+                    <input id="phone-number" type="tel" class="validate" name="number">
+                    <label for="phone-number">Find phone number</label>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button>
             </form>
         </div>
         
     </div>
 </div>
 
-
+<script type="text/javascript" src="js/search.js"></script>
 <%- include('../partials/footer'); -%>
